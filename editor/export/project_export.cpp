@@ -1238,10 +1238,16 @@ void ProjectExportDialog::_export_project() {
 	export_project->clear_filters();
 
 	List<String> extension_list = platform->get_binary_extensions(current);
+	bool show_extension = !extension_list.is_empty();
 	for (const String &extension : extension_list) {
 		// TRANSLATORS: This is the name of a project export file format. %s will be replaced by the platform name.
-		export_project->add_filter("*." + extension, vformat(TTR("%s Export"), platform->get_name()));
+		if (show_extension) {
+			export_project->add_filter("*." + extension, vformat(TTR("%s Export (*.%s)"), platform->get_name(), extension));
+		} else {
+			export_project->add_filter("*." + extension, vformat(TTR("%s Export"), platform->get_name()));
+		}
 	}
+	export_project->add_filter("*.*", TTR("All Files"));
 
 	if (!current->get_export_path().is_empty()) {
 		export_project->set_current_path(current->get_export_path());
