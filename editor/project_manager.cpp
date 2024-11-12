@@ -1249,7 +1249,7 @@ ProjectManager::ProjectManager() {
 	{
 		local_projects_vb = memnew(VBoxContainer);
 		local_projects_vb->set_name("LocalProjectsTab");
-		_add_main_view(MAIN_VIEW_PROJECTS, TTR("Projects"), Ref<Texture2D>(), local_projects_vb);
+		_add_main_view(MAIN_VIEW_PROJECTS, TTR("Projects that you will never finish"), Ref<Texture2D>(), local_projects_vb);
 
 		// Project list's top bar.
 		{
@@ -1430,7 +1430,7 @@ ProjectManager::ProjectManager() {
 	if (AssetLibraryEditorPlugin::is_available()) {
 		asset_library = memnew(EditorAssetLibrary(true));
 		asset_library->set_name("AssetLibraryTab");
-		_add_main_view(MAIN_VIEW_ASSETLIB, TTR("Asset Library"), Ref<Texture2D>(), asset_library);
+		_add_main_view(MAIN_VIEW_ASSETLIB, TTR("FUCK YOU"), Ref<Texture2D>(), asset_library);
 		asset_library->connect("install_asset", callable_mp(this, &ProjectManager::_install_project));
 	} else {
 		VBoxContainer *asset_library_filler = memnew(VBoxContainer);
